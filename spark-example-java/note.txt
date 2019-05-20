@@ -1,0 +1,28 @@
+spark://k8s-master:7077
+
+spark://192.168.77.130:7077
+
+./sbin/start-master.sh
+./sbin/start-slave.sh spark://192.168.77.130:7077
+
+./bin/spark-submit \
+  --class org.apache.spark.examples.JavaWordCount \
+  --master spark://192.168.77.130:7077 \
+  --deploy-mode cluster \
+  --executor-memory 700M \
+  /root/spark/examples/jars/spark-examples_2.11-2.4.1.jar \
+  /tmp/abc.txt
+  
+   
+   ./bin/run-example org.apache.spark.examples.JavaWordCount /tmp/abc.txt
+   
+   ./bin/spark-submit --class org.apache.spark.examples.JavaWordCount --master local[2] /root/spark/examples/jars/spark-examples_2.11-2.4.1.jar file:///tmp/abc.txt
+
+
+./bin/spark-submit \
+  --class org.apache.spark.examples.JavaWordCount \
+  --master spark://192.168.77.130:7077 \
+  --deploy-mode client \
+  --executor-memory 700M \
+  /root/spark/examples/jars/spark-examples_2.11-2.4.1.jar \
+  /tmp/abc.txt

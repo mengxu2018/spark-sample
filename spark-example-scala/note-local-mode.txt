@@ -1,0 +1,14 @@
+[root@k8s-master spark]#  bin/spark-submit --class org.apache.spark.examples.sql.JavaSparkSQLExample --master local[2] simple-project-1.0.jar^C
+[root@k8s-master spark]# pwd
+/root/spark
+[root@k8s-master spark]#
+
+
+the org.apache.spark.examples.sql.JavaSparkSQLExample will read file from examples/src/main/resources/people.json, since the file path
+is relative, so it will read file from /root/spark/examples/src/main/resources/people.json
+
+
+
+pass arguments
+[root@k8s-master spark]#  bin/spark-submit --class org.apache.spark.examples.JavaWordCount    --master local[2] simple-project-1.0.jar  /tmp/abc.txt
+
