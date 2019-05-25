@@ -8,6 +8,6 @@ public/
 *.iml
 .idea/
 target/
-spark-master/
-spark-master.zip
+spark-2.4.2/
+spark-2.4.2.zip
 learn-spark
