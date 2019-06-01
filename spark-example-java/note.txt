@@ -19,10 +19,12 @@ spark://192.168.77.130:7077
    ./bin/spark-submit --class org.apache.spark.examples.JavaWordCount --master local[2] /root/spark/examples/jars/spark-examples_2.11-2.4.1.jar file:///tmp/abc.txt
 
 
+
+// hdfs
 ./bin/spark-submit \
-  --class org.apache.spark.examples.JavaWordCount \
+  --class org.apache.spark.examples.SimpleApp \
   --master spark://192.168.77.130:7077 \
   --deploy-mode client \
   --executor-memory 700M \
-  /root/spark/examples/jars/spark-examples_2.11-2.4.1.jar \
-  /tmp/abc.txt
+  /root/spark/spark-example-java-1.0.jar \
+  hdfs://k8s-master:9000/user/xuhang/core-site.xml

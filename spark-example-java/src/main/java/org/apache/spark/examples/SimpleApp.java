@@ -5,9 +5,17 @@ import org.apache.spark.sql.Dataset;
 
 public class SimpleApp {
     public static void main(String[] args) {
-        String logFile = "examples/src/main/resources/people.json";
+        if (args.length < 1) {
+            System.err.println("Usage: JavaWordCount <file>");
+            System.exit(1);
+        }
+
+//        String logFile = "examples/src/main/resources/people.json";
+        // Should be some file on your system
+        String logFile = "hdfs://k8s-master:9000/user/xuhang/mapred-site.xml";
+
         SparkSession spark = SparkSession.builder().appName("Simple Application").getOrCreate();
-        Dataset<String> logData = spark.read().textFile(logFile).cache();
+        Dataset<String> logData = spark.read().textFile(args[0]).cache();
 
 
 
@@ -34,7 +42,7 @@ public class SimpleApp {
 //        long numAs = logData.filter(s -> s.contains("a")).count();
 //        long numBs = logData.filter(s -> s.contains("b")).count();
 
-        System.out.println("Lines with a: " + numAs + ", lines with b: " + numBs);
+        System.out.println("my Lines with a: " + numAs + ", lines with b: " + numBs);
 
         spark.stop();
         System.out.println("hello world");
